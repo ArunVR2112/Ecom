@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import { getAllEmployee } from '../Service/Serivice'; 
+import { getAllEmployee } from '../Service/Service'; 
+import {useNavigate} from 'react-router-dom';
 import './List.css'
 function ListEmployee() {
   const [employees, setEmployees] = useState([]);
   const [loading, setLoading] = useState(true);
-
+  const navigator = useNavigate();
   useEffect(() => {
     fetchEmployees();
   }, []);
@@ -20,14 +21,19 @@ function ListEmployee() {
         setLoading(false);
       });
   };
-
+  function addEmployee(){
+    navigator('/add-employee');
+  }
   return (
     <div className="employee-list">
       {loading ? (
         <p>Loading employees...</p>
       ) : (
         <div>
-          <h2>Employee List</h2>
+            <div className='subcontainer'>
+                <h2>Employee List</h2>
+                <button className='btn' onClick={addEmployee}>Add Employee</button>
+            </div>
           <table>
             <thead>
               <tr>

@@ -65,3 +65,23 @@
     color: white;
   }
   
+  .subcontainer{
+    display: flex;
+    column-gap: 50px;
+  }
+  .btn {
+    background-color: #3498db;
+    margin: 20px;
+    color: white;
+    height: 30px; 
+    padding: 5px 10px; 
+    border: none; 
+    border-radius: 5px; 
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  .btn:hover {
+    background-color: #2980b9;
+  }
+  

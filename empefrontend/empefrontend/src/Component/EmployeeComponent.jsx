@@ -128,3 +128,11 @@ function EmployeeComponent() {
 }
 
 export default EmployeeComponent;
+// import React from 'react'
+
+// export default function EmployeeComponent() {
+//   return (
+//     <div>EmployeeComponent</div>
+//   )
+// }
+
