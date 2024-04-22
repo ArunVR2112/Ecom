@@ -85,3 +85,33 @@
     background-color: #2980b9;
   }
   
+  .btn2{
+    background-color: #34dbb7;
+    color: white;
+    height: 30px; 
+    padding: 5px 10px; 
+    border: none; 
+    border-radius: 5px; 
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  .btn2:hover {
+    background-color: #29b95e;
+  }
+.delBtn{
+  background-color: #eb1717;
+  color: white;
+  height: 30px; 
+  padding: 5px 10px; 
+  border: none; 
+  border-radius: 5px; 
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.delBtn:hover {
+  background-color: #cf0c4a;
+}
+  .button-flex{
+    display: flex;
+    column-gap: 10px;
+  }

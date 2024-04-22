@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './FormCss.css';
-import { createEmp } from '../Service/Service';
+import { createEmp, getEmployee, updateEmployee } from '../Service/Service';
 import { useNavigate, useParams } from 'react-router-dom';
 
 function EmployeeComponent() {
@@ -15,6 +15,18 @@ function EmployeeComponent() {
     email: '',
     pswd: '',
   });
+
+
+  useEffect(() => {
+    if (id) {
+      getEmployee(id).then((response) => {
+        setName(response.data.name);
+        setEmail(response.data.email);
+        setPswd(response.data.pswd);
+
+      }).catch(error => { console.log(error) })
+    }
+  }, [id])
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -32,15 +44,25 @@ function EmployeeComponent() {
     e.preventDefault();
     const employee = { name, email, pswd };
 
+
     if (validate()) {
-      createEmp(employee)
-        .then((response) => {
-          console.log('Employee created:', response.data);
+
+      if (id) {
+        updateEmployee(id, employee).then((response) => {
           navigator('/employee');
+        }).catch(error => {
+          console.log(error);
         })
-        .catch((error) => {
-          console.error('Error creating employee:', error);
-        });
+      } else {
+        createEmp(employee)
+          .then((response) => {
+            console.log('Employee created:', response.data);
+            navigator('/employee');
+          })
+          .catch((error) => {
+            console.error('Error creating employee:', error);
+          });
+      }
     }
   };
 
