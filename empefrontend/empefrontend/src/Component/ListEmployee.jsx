@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { getAllEmployee } from '../Service/Service'; 
-// import { Link } from 'react-router-dom';
+import { getAllEmployee } from '../Service/Serivice'; 
+import './List.css'
 function ListEmployee() {
   const [employees, setEmployees] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -10,18 +10,17 @@ function ListEmployee() {
   }, []);
 
   const fetchEmployees = () => {
-    getAllEmployee() // Fetching employee list from the backend
+    getAllEmployee() 
       .then((response) => {
-        setEmployees(response.data); // Assuming the response contains the employee list
-        setLoading(false); // Set loading to false after fetching
+        setEmployees(response.data); 
+        setLoading(false);
       })
       .catch((error) => {
         console.error('Error fetching employee data:', error);
         setLoading(false);
       });
   };
-// {                    {<Link to={`/employee/edit/${emp.id}`}>Edit</Link>
-//                     <Link to={`/employee/delete/${emp.id}`}>Delete</Link>}
+
   return (
     <div className="employee-list">
       {loading ? (
@@ -35,6 +34,7 @@ function ListEmployee() {
                 <th>ID</th>
                 <th>Name</th>
                 <th>Email</th>
+                <th>Password</th>
                 <th>Actions</th>
               </tr>
             </thead>
@@ -45,7 +45,7 @@ function ListEmployee() {
                   <td>{emp.name}</td>
                   <td>{emp.email}</td>
                   <td>
-                    {/* Assuming you have routing setup for Edit and Delete actions */}
+                    {emp.pswd}
 
                   </td>
                 </tr>
