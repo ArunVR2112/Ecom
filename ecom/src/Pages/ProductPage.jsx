@@ -52,7 +52,8 @@ const ProductPage = () => {
                                     <p>${product.price}</p>
                                 </div>
                                 <div className='cursor-pointer mr-4'>
-                                    <FaRegHeart />
+                                    <FaRegHeart className='hover:scale-150'  />
+
                                 </div>
                             </div>
                         </div>
@@ -71,15 +72,15 @@ const ProductPage = () => {
                                         {renderStars(product.rating.rate)}
                                     </div>
                                     <div className='bg-gradient-to-b   cursor-pointer  justify-center items-center max-w-max from-cyan-400 to-blue-500 '>
-                                    <button onClick={() => { addProductToCart(product) }} className='text-xl m-1' >Add To cart</button>
-                                </div>
+                                        <button onClick={() => { addProductToCart(product) }} className='text-xl m-1' >Add To cart</button>
+                                    </div>
                                 </div>
                             )}
                         </div>
                     </div>
                 )
             }
-           
+
         </div>
     );
 };

@@ -2,8 +2,8 @@ import React, { useEffect, useState } from 'react'
 import { MdOutlineHome } from "react-icons/md";
 import { IoIosCart } from "react-icons/io";
 import { FaRegHeart } from "react-icons/fa6";
-import {  Link } from "react-router-dom";
-const NavBar = ({setOpenCart,setOpenWishList}) => {
+import { Link } from "react-router-dom";
+const NavBar = ({ setOpenCart, setOpenWishList }) => {
     let apiUrl = 'https://fakestoreapi.com/products/categories';
     const [categories, setCategories] = useState([])
 
@@ -33,13 +33,14 @@ const NavBar = ({setOpenCart,setOpenWishList}) => {
 
                     categories.map((category) => {
                         return (
-                           <Link to={`category/${category}`} > <p key={category} className='capitalize'>{category}</p></Link>
+                            <Link to={`category/${category}`} > <p key={category} className='capitalize'>{category}</p></Link>
                         )
                     })
                 }
 
-               <IoIosCart className='hover:scale-150' onClick={()=>{setOpenCart(true)}} />
-                <Link to='wishList'> <FaRegHeart className='hover:scale-150' /></Link>
+                <IoIosCart className='hover:scale-150' onClick={() => { setOpenCart(true) }} />
+
+                <FaRegHeart className='hover:scale-150' onClick={()=>setOpenWishList(true)} />
             </div>
         </div>
     )
