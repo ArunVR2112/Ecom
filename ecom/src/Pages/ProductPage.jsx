@@ -70,16 +70,16 @@ const ProductPage = () => {
                                     <div className='flex'>
                                         {renderStars(product.rating.rate)}
                                     </div>
-                                    <p className='pl-8'>{product.rating.count} reviews</p>
+                                    <div className='bg-gradient-to-b   cursor-pointer  justify-center items-center max-w-max from-cyan-400 to-blue-500 '>
+                                    <button onClick={() => { addProductToCart(product) }} className='text-xl m-1' >Add To cart</button>
+                                </div>
                                 </div>
                             )}
                         </div>
                     </div>
                 )
             }
-            <div className='bg-gradient-to-b  right-96 mt-96 fixed h-10 mx-0 justify-center items-center mt-4 max-w-max from-cyan-400 to-blue-500 rounded-md'>
-                <button onClick={() => { addProductToCart(product) }} className='text-2xl mx-0' >Add To cart</button>
-            </div>
+           
         </div>
     );
 };
