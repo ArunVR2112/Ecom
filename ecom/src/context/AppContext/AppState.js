@@ -7,23 +7,27 @@ export default function AppState({ children }) {
   let [cartItems, setCartItems] = useState([]);
 
   let addProductToCart = (product) => {
-   
+
     const exisitingProduct = cartItems.find((p) => p.id === product.id);
     if (exisitingProduct) {
       const updatedCart = cartItems.map((p) =>
         p.id === product.id ? { ...p, quantity: Number(p.quantity) + 1 } : p
+      
       );
 
       setCartItems(updatedCart);
+      toast.success("Product added to Cart");
+
+
     } else {
       setCartItems([...cartItems, { ...product, quantity: 1 }]);
     }
   };
 
-  let handleQuantityChange = (productId,newQuantity)=>{
-    const updatedCart = cartItems.map(product=>
-    product.id === productId? {...product,quantity:newQuantity}:product
-        )
+  let handleQuantityChange = (productId, newQuantity) => {
+    const updatedCart = cartItems.map(product =>
+      product.id === productId ? { ...product, quantity: newQuantity } : product
+    )
     setCartItems(updatedCart)
     toast.success("Product Quantity Changed")
   }

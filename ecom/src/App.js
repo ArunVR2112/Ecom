@@ -9,6 +9,8 @@ import AppState from "./context/AppContext/AppState.js";
 import { Toaster } from "react-hot-toast";
 import CartComponent from "./Component/CartComponent.js";
 import WishListComponent from './Component/WishListComponent.js'
+import LogIn from "./Model/LogIn.js";
+import Registration from "./Model/Registration.js";
 function App() {
   const [openCart, setOpenCart] = useState(false);
   const [openWishList, setOpenWishList] = useState(false);
@@ -22,9 +24,11 @@ function App() {
         <MessageComponent />
         <Routes>
           <Route index element={<HomePage />} />
+          <Route path='home/' element= {<HomePage /> }/>
           <Route path='category/:id' element={<Category />} />
           <Route path='product/:id' element={<Product />} />
-
+          <Route path="login" element={<LogIn/>} />
+          <Route path="registration" element={<Registration/>}/>
         </Routes>
       </AppState>
     </div>
