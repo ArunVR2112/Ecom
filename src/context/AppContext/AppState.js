@@ -3,7 +3,7 @@ import AppContext from "./AppContext";
 import toast from "react-hot-toast";
 export default function AppState({ children }) {
   let appName = "My New Ecommerce";
-  let currentYear = 2023;
+
   let [cartItems, setCartItems] = useState([]);
 
   let addProductToCart = (product) => {
@@ -48,7 +48,7 @@ export default function AppState({ children }) {
       value={{
         appName,
         cartItems,
-        currentYear,
+        
         greetUser,
         addProductToCart,
         removeProductFromCart,

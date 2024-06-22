@@ -26,7 +26,6 @@ const LogIn = () => {
     e.preventDefault();
     setError('');
     const result = await loginData(data).then((result) => {
-      console.log(result.status);
       if (result.status === 200) {
         console.log(result);
         navigate("/home");
@@ -35,14 +34,14 @@ const LogIn = () => {
       console.log(err.data);
       setError("Entered Email or password is Wrong!");
     });
-
+    console.log(result);
   };
   return (
     <section className='bg-gray-50 dark:bg-gray-900 '>
       <div className='flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0'>
 
         <div onClick={() => { setNav(!nav) }} className=' cursor-pointer pr-4 z-10 text-gray-500 md:hidden'>
-        
+
         </div>
         <a href='#' className='flex items-center mb-6 text-2xl font-semibold text-gray-900 dark:text-white'>
           <img className='w-8 h-8 mr-2' src='https://flowbite.s3.amazonaws.com/blocks/marketing-ui/logo.svg' alt='logo' />

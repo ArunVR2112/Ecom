@@ -11,11 +11,13 @@ import CartComponent from "./Component/CartComponent.js";
 import WishListComponent from './Component/WishListComponent.js'
 import LogIn from "./Model/LogIn.js";
 import Registration from "./Model/Registration.js";
+
 function App() {
   const [openCart, setOpenCart] = useState(false);
   const [openWishList, setOpenWishList] = useState(false);
   return (
     <div>
+    
       <AppState>
         <Toaster />
         <CartComponent openCart={openCart} setOpenCart={setOpenCart} />
