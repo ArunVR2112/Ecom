@@ -1,14 +1,13 @@
-import React, { useState } from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { FaRegHeart } from 'react-icons/fa6';
+import AppContext from '../context/AppContext/AppContext.js';
+
 
 
 const ProductCard = ({ product }) => {
-    const [check, setCheck] = useState(false);
 
-    const addToCart = () => {
-        setCheck(!check);
-    };
+    let { addProductToWishList } = useContext(AppContext)
 
     return (
         <div key={product.id} className='w-full sm:w-1/2 md:w-1/3 lg:w-1/4 border-transparent border shadow-lg m-2 p-4 sm:p-6 md:p-8 rounded-md flex flex-col justify-between hover:shadow-2xl hover:border hover:border-blue-500'>
@@ -21,10 +20,10 @@ const ProductCard = ({ product }) => {
                     <p className='text-sm sm:text-base md:text-lg'>${product.price}</p>
                 </div>
                 <div className='cursor-pointer'>
-                    <FaRegHeart onClick={addToCart} className='text-xl hover:scale-125 transition-transform duration-200' />
+                    <FaRegHeart onClick={() => { addProductToWishList(product) }} className='text-xl hover:scale-125 transition-transform duration-200' />
                 </div>
             </div>
-         
+
         </div>
     );
 };

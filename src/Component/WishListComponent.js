@@ -1,7 +1,7 @@
 import { Fragment, useContext, useState } from 'react'
 import { Dialog, Transition } from '@headlessui/react'
 import AppContext from '../context/AppContext/AppContext'
-import CartProduct from './CartProduct';
+import WishListProduct from './WishListProducts';
 // import emptyCart from '../images/empty-cart.png';
 export default function CartComponent({ openWishList, setOpenWishList }) {
   let appContext = useContext(AppContext);
@@ -55,15 +55,15 @@ export default function CartComponent({ openWishList, setOpenWishList }) {
                       </div>
                     </div>
                     <div className="relative mt-6 flex-1 px-4 sm:px-6">
-                      {appContext.cartItems.length < 1 ? (<>
+                      {appContext.wishListItem.length < 1 ? (<>
                         <img className="w-full" alt="Empty Cart" />
                         <p className='text-center'>
                           Pls! Item to Your Wish List
                         </p>
-                      </>) : (appContext.cartItems?.map((product) => {
+                      </>) : (appContext.wishListItem?.map((product) => {
                         return (
                           <>
-                            <CartProduct product={product} />
+                            <WishListProduct product={product} />
                           </>
                         )
                       }))}

@@ -8,7 +8,7 @@ import { DataContext } from '../context/dataContext/DataContext.tsx';
 const LogIn = () => {
   const [data, setData] = useState({ email: '', password: '' });
   const [error, setError] = useState('');
-  const { user, setUser } = useContext(DataContext);
+  const { setUser } = useContext(DataContext);
   const navigate = useNavigate();
 
   const handleChange = (e) => {
