@@ -11,13 +11,14 @@ import CartComponent from "./Component/CartComponent.js";
 import WishListComponent from './Component/WishListComponent.js'
 import LogIn from "./Model/LogIn.js";
 import Registration from "./Model/Registration.js";
+import { UserProvider } from "../src/context/dataContext/DataContext.tsx";
 
 function App() {
   const [openCart, setOpenCart] = useState(false);
   const [openWishList, setOpenWishList] = useState(false);
   return (
     <div>
-    
+    <UserProvider>
       <AppState>
         <Toaster />
         <CartComponent openCart={openCart} setOpenCart={setOpenCart} />
@@ -33,6 +34,7 @@ function App() {
           <Route path="registration" element={<Registration/>}/>
         </Routes>
       </AppState>
+      </UserProvider>
     </div>
   );
 }

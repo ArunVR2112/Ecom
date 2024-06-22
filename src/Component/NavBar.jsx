@@ -1,24 +1,29 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { MdOutlineHome } from "react-icons/md";
 import { IoIosCart } from "react-icons/io";
 import { FaRegHeart, FaBars, FaTimes } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import { DataContext } from '../context/dataContext/DataContext.tsx';
 
 const NavBar = ({ setOpenCart, setOpenWishList }) => {
-    let apiUrl = 'https://fakestoreapi.com/products/categories';
+    const apiUrl = 'https://fakestoreapi.com/products/categories';
     const [categories, setCategories] = useState([]);
     const [nav, setNav] = useState(false);
-    const [received, setReceived] = useState(false);
+    const { user } = useContext(DataContext);
 
     useEffect(() => {
+        const getAllResponses = async () => {
+            try {
+                const res = await fetch(apiUrl);
+                const data = await res.json();
+                setCategories(data);
+            } catch (error) {
+                console.error('Error fetching categories:', error);
+            }
+        };
+
         getAllResponses();
     }, []);
-
-    async function getAllResponses() {
-        let res = await fetch(apiUrl);
-        let data = await res.json();
-        setCategories(data);
-    }
 
     return (
         <div className='flex justify-between h-16 w-full bg-gray-50 dark:bg-gray-900 items-center'>
@@ -34,14 +39,18 @@ const NavBar = ({ setOpenCart, setOpenWishList }) => {
                         {category}
                     </Link>
                 ))}
-                <Link to='/login' className='capitalize'>
-                    Sign in
-                </Link>
-                {received &&
-                    (<div><IoIosCart className='hover:scale-150 py-2 text-xl' size={24} onClick={() => { setOpenCart(true); setNav(false); } } />
-                    <FaRegHeart className='hover:scale-150 py-2 text-xl' size={24} onClick={() => { setOpenWishList(true); setNav(false); } } />
+                {user.status !== 200 && (
+                    <Link to='/login' className='capitalize'>
+                        Sign in
+                    </Link>
+                )}
+                {user.status === 200 && (
+                    <div className='flex items-center gap-4'>
+                        <IoIosCart className='hover:scale-150 py-2 text-xl' size={32} onClick={() => { setOpenCart(true); setNav(false); }} />
+                        <FaRegHeart className='hover:scale-150 py-2 text-xl' size={32} onClick={() => { setOpenWishList(true); setNav(false); }} />
+                        
                     </div>
-                    )}
+                )}
             </div>
 
             {/* Mobile Menu Icon */}
@@ -57,18 +66,19 @@ const NavBar = ({ setOpenCart, setOpenWishList }) => {
                             {category}
                         </Link>
                     ))}
-                    <Link to='/login' className='capitalize py-2 text-xl' onClick={() => setNav(false)}>
-                        Sign in
-                    </Link>
-                    {received &&
-                        (<div><IoIosCart className='hover:scale-150 py-2 text-xl' size={24} onClick={() => { setOpenCart(true); setNav(false); } } />
-                        <FaRegHeart className='hover:scale-150 py-2 text-xl' size={24} onClick={() => { setOpenWishList(true); setNav(false); } } />
+                    {user.status !== 200 && (
+                        <Link to='/login' className='capitalize py-2 text-xl' onClick={() => setNav(false)}>
+                            Sign in
+                        </Link>
+                    )}
+                    {user.status === 200 && (
+                        <div className='flex flex-col cursor-auto items-center gap-4 mt-4'>
+                            <IoIosCart className='hover:scale-150 text-3xl' size={24} onClick={() => { setOpenCart(true); setNav(false); }} />
+                            <FaRegHeart className='hover:scale-150 text-3xl' size={24} onClick={() => { setOpenWishList(true); setNav(false); }} />
                         </div>
-                        )}
+                    )}
                 </div>
             )}
-
-
         </div>
     );
 };

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { FaRegHeart } from 'react-icons/fa6';
-import MessageComponent from './MessageComponent';
+
 
 const ProductCard = ({ product }) => {
     const [check, setCheck] = useState(false);
@@ -24,7 +24,7 @@ const ProductCard = ({ product }) => {
                     <FaRegHeart onClick={addToCart} className='text-xl hover:scale-125 transition-transform duration-200' />
                 </div>
             </div>
-            {check && <MessageComponent />}
+         
         </div>
     );
 };
