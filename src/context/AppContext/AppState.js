@@ -94,6 +94,8 @@ let handleQuantityChangeWishList = (productId, newQuantity) => {
         appName,
         cartItems,
         wishListItem,
+
+        
         addProductToWishList,
         greetUser,
         addProductToCart,
