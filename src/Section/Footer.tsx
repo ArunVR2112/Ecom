@@ -1,4 +1,3 @@
-/* eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react';
 import { CiLinkedin } from 'react-icons/ci';
 import { MdMarkEmailRead } from 'react-icons/md';
@@ -15,13 +14,14 @@ const Footer = () => {
     ];
 
     return (
-        <footer className='relative bg-gray-50 dark:bg-gray-900 text-white py-8'>
+        <footer className='bg-gray-50 dark:bg-gray-900 text-white py-8 mt-auto'>
             <div className='container mx-auto'>
                 <div className='flex flex-col md:flex-row justify-between items-center mb-6'>
                     <div className='flex gap-4 items-center mb-4 md:mb-0'>
                         {socialLinks.map((value) => {
                             const Icon = value.icon;
                             return (
+                                // eslint-disable-next-line jsx-a11y/anchor-is-valid
                                 <a
                                     key={value.label}
                                     href='#'

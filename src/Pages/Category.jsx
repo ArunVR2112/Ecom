@@ -23,7 +23,7 @@ const Category = () => {
         getProductCategory()
     },[id])
   return (
-    <div className='max-w-7xl mx-auto flex flex-wrap justify-between'>
+    <div className='max-w-7xl mx-auto flex flex-wrap  justify-between'>
         {
             loading ? "Fetching Category Details":(
                 product.map((data)=>{return(

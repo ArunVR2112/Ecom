@@ -30,7 +30,7 @@ export default function AppState({ children }) {
 
   let handleQuantityChange = (productId, newQuantity) => {
     const updatedCart = cartItems.map(product =>
-      product.id === productId ? { ...product, quantity: newQuantity } : product
+      product.id === productId ? { ...product, quantity: newQuantity} : product
     )
     setCartItems(updatedCart)
     toast.success("Product Quantity Changed")
@@ -43,6 +43,11 @@ export default function AppState({ children }) {
     setCartItems(updatedCartItems);
     toast.success("Item Removed From Cart");
   };
+
+  //Prices Should also Increment 
+  let handlePrice =(productId)=>{
+  
+  }
 
   function greetUser() {
     console.log("Hey!! How are you??");
@@ -95,7 +100,7 @@ let handleQuantityChangeWishList = (productId, newQuantity) => {
         cartItems,
         wishListItem,
 
-        
+
         addProductToWishList,
         greetUser,
         addProductToCart,

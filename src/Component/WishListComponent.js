@@ -1,4 +1,4 @@
-import { Fragment, useContext, useState } from 'react'
+import { Fragment, useContext } from 'react'
 import { Dialog, Transition } from '@headlessui/react'
 import AppContext from '../context/AppContext/AppContext'
 import WishListProduct from './WishListProducts';

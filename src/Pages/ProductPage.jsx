@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useContext, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { FaRegHeart } from 'react-icons/fa';
@@ -9,7 +10,7 @@ const ProductPage = () => {
     const [product, setProduct] = useState(null);
     const [loading, setLoading] = useState(true);
     const apiUrl = 'https://fakestoreapi.com/products/';
-    let { addProductToCart } = useContext(AppContext)
+    let { addProductToCart,addProductToWishList } = useContext(AppContext)
 
     async function getDetails() {
         setLoading(true);
@@ -40,7 +41,7 @@ const ProductPage = () => {
     };
 
     return (
-        <div className='max-w-7xl mx-auto flex flex-wrap justify-between'>
+        <div className='max-w-7xl mx-auto flex flex-wrap  justify-between'>
             {
                 loading ? "Loading Fetched Data" : (
                     <div className='flex flex-cols gap-10'>
@@ -52,7 +53,7 @@ const ProductPage = () => {
                                     <p>${product.price}</p>
                                 </div>
                                 <div className='cursor-pointer mr-4'>
-                                    <FaRegHeart className='hover:scale-150'  />
+                                    <FaRegHeart onClick={()=>{addProductToWishList(product)}} className='hover:scale-150'  />
 
                                 </div>
                             </div>

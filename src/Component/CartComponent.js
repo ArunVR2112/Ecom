@@ -1,15 +1,15 @@
-import { Fragment, useContext, useState } from 'react'
-import { Dialog, Transition } from '@headlessui/react'
-import AppContext from '../context/AppContext/AppContext'
+import { Fragment, useContext } from 'react';
+import { Dialog, Transition } from '@headlessui/react';
+import AppContext from '../context/AppContext/AppContext';
 import CartProduct from './CartProduct';
 // import emptyCart from '../images/empty-cart.png';
-export default function CartComponent({ openCart, setOpenCart }) {
-  let appContext = useContext(AppContext);
 
+export default function CartComponent({ openCart, setOpenCart }) {
+  const appContext = useContext(AppContext);
 
   return (
     <Transition.Root show={openCart} as={Fragment}>
-      <Dialog as="div" className="relative z-10" onClose={setOpenCart}>
+      <Dialog as="div" className="relative z-10" onClose={() => setOpenCart(false)}>
         <Transition.Child
           as={Fragment}
           enter="ease-in-out duration-500"
@@ -47,30 +47,25 @@ export default function CartComponent({ openCart, setOpenCart }) {
                             className="relative rounded-md bg-white text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
                             onClick={() => setOpenCart(false)}
                           >
-                            <span className="absolute -inset-2.5" />
                             <span className="sr-only">Close panel</span>
-                            x
+                            <span aria-hidden="true">×</span>
                           </button>
                         </div>
                       </div>
                     </div>
                     <div className="relative mt-6 flex-1 px-4 sm:px-6">
-                      {appContext.cartItems.length < 1 ? (<>
-                        <img className="w-full" alt="Empty Cart" />
-                        <p className='text-center'>
-                          No Products In The Cart
-                        </p>
-                      </>) : (appContext.cartItems?.map((product) => {
-                        return (
-                          <>
-                            <CartProduct product={product} />
-                          </>
-                        )
-                      }))}
-
-
-
-
+                      {appContext.cartItems.length < 1 ? (
+                        <>
+                          
+                          <p className="text-center">
+                            No Products In The Cart
+                          </p>
+                        </>
+                      ) : (
+                        appContext.cartItems.map((product) => (
+                          <CartProduct key={product.id} product={product} />
+                        ))
+                      )}
                     </div>
                   </div>
                 </Dialog.Panel>
@@ -80,5 +75,5 @@ export default function CartComponent({ openCart, setOpenCart }) {
         </div>
       </Dialog>
     </Transition.Root>
-  )
+  );
 }
