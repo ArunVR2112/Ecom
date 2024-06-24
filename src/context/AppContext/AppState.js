@@ -45,8 +45,8 @@ export default function AppState({ children }) {
   };
 
   //Prices Should also Increment 
-  let handlePrice =(productId)=>{
-  
+  let logInFirst =()=>{
+    toast.success("Log IN to Account");
   }
 
   function greetUser() {
@@ -107,7 +107,8 @@ let handleQuantityChangeWishList = (productId, newQuantity) => {
         removeProductFromCart,
         handleQuantityChange,
         removeProductFromWishList,
-        handleQuantityChangeWishList
+        handleQuantityChangeWishList,
+        logInFirst
       }}
     >
       {children}
