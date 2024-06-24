@@ -1,11 +1,11 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useContext, useState } from 'react'
 import AppContext from '../context/AppContext/AppContext'
 
 export default function CartProduct({ product }) {
   console.log("Product from cartProduct", product)
 
   let { removeProductFromCart, handleQuantityChange } = useContext(AppContext)
-  const [price,setPrice]=useState(product.price);
+  const [price]=useState(product.price);
 
   return (
     <div className='flex space-x-5 border border-gray-200 mt-3 p-3'>
@@ -17,7 +17,7 @@ export default function CartProduct({ product }) {
         <input type="number" value={product.quantity} onChange={(e) => { handleQuantityChange(product.id, e.target.value,price) }} />
         <span className='flex flex-wrap gap-6'>
           <div className=''>
-            <p>${price}</p>
+            <p>${product.price*product.quantity}</p>
           </div>
           <svg
             xmlns="http://www.w3.org/2000/svg"
