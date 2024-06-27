@@ -13,6 +13,7 @@ import Registration from "./Model/Registration.js";
 import { UserProvider } from "../src/context/dataContext/DataContext.tsx";
 import Footer from "./Section/Footer.tsx";
 import ScrollToTop from "./Section/ScrollerToTop.tsx";
+import DashBoard from "./Pages/DashBoard.tsx";
 
 function App() {
   const [openCart, setOpenCart] = useState(false);
@@ -35,6 +36,7 @@ function App() {
               <Route path='product/:id' element={<Product />} />
               <Route path="login" element={<LogIn />} />
               <Route path="registration" element={<Registration />} />
+              <Route path="/dashboard" element=<DashBoard/>/>
             </Routes>
           </main>
         </AppState>

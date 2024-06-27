@@ -29,7 +29,7 @@ const NavBar = ({ setOpenCart, setOpenWishList }) => {
         <div className='flex justify-between h-16 w-full bg-gray-50 dark:bg-gray-900 items-center'>
             <Link to="/" className='flex items-center gap-6 text-white ml-10 cursor-pointer'>
                 <MdOutlineHome size={24} />
-                <h2 className='text-xl font-semibold'>MyCommerce</h2>
+                <h2 className='text-xl font-semibold'>QuickCart</h2>
             </Link>
 
             {/* Desktop Menu */}
@@ -71,6 +71,7 @@ const NavBar = ({ setOpenCart, setOpenWishList }) => {
                         <Link to='/login' className='capitalize py-2 text-xl' onClick={() => setNav(false)}>
                             Sign in
                         </Link>
+                        
                     )}
                     {user.status === 200 && (
                         <div className='flex flex-col cursor-auto items-center gap-4 mt-4'>
