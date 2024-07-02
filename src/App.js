@@ -9,7 +9,7 @@ import { Toaster } from "react-hot-toast";
 import CartComponent from "./Component/CartComponent.js";
 import WishListComponent from './Component/WishListComponent.js';
 import LogIn from "./Model/LogIn.js";
-import Registration from "./Model/Registration.js";
+import Registration from "./Model/Registration.tsx";
 import { UserProvider } from "../src/context/dataContext/DataContext.tsx";
 import Footer from "./Section/Footer.tsx";
 import ScrollToTop from "./Section/ScrollerToTop.tsx";

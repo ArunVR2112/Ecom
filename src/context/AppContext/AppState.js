@@ -1,11 +1,14 @@
 import { useState } from "react";
 import AppContext from "./AppContext";
 import toast from "react-hot-toast";
+
+
+
 export default function AppState({ children }) {
   let appName = "My New Ecommerce";
 
   let [cartItems, setCartItems] = useState([]);
-  let [wishListItem,setWishListItem]=useState([]);
+  let [wishListItem, setWishListItem] = useState([]);
 
   // Cart Related Context
   let addProductToCart = (product) => {
@@ -14,7 +17,7 @@ export default function AppState({ children }) {
     if (exisitingProduct) {
       const updatedCart = cartItems.map((p) =>
         p.id === product.id ? { ...p, quantity: Number(p.quantity) + 1 } : p
-      
+
       );
 
       setCartItems(updatedCart);
@@ -30,7 +33,7 @@ export default function AppState({ children }) {
 
   let handleQuantityChange = (productId, newQuantity) => {
     const updatedCart = cartItems.map(product =>
-      product.id === productId ? { ...product, quantity: newQuantity} : product
+      product.id === productId ? { ...product, quantity: newQuantity } : product
     )
     setCartItems(updatedCart)
     toast.success("Product Quantity Changed")
@@ -45,7 +48,7 @@ export default function AppState({ children }) {
   };
 
   //Prices Should also Increment 
-  let logInFirst =()=>{
+  let logInFirst = () => {
     toast.success("Log IN to Account");
   }
 
@@ -55,42 +58,42 @@ export default function AppState({ children }) {
 
 
 
-  
-
-// Add product to wish-list Wish List Related  Context Here On
-
-let addProductToWishList = (product) => {
-
-  const exisitingProduct = wishListItem.find((p) => p.id === product.id);
-  if (exisitingProduct) {
-    const updatedCart = wishListItem.map((p) =>
-      p.id === product.id ? { ...p, quantity: Number(p.quantity) + 1 } : p
-    
-    );
-
-    setWishListItem(updatedCart);
-    toast.success("Product added to WishList");
 
 
-  } else {
-    setWishListItem([...wishListItem, { ...product, quantity: 1 }]);
+  // Add product to wish-list Wish List Related  Context Here On
+
+  let addProductToWishList = (product) => {
+
+    const exisitingProduct = wishListItem.find((p) => p.id === product.id);
+    if (exisitingProduct) {
+      const updatedCart = wishListItem.map((p) =>
+        p.id === product.id ? { ...p, quantity: Number(p.quantity) + 1 } : p
+
+      );
+
+      setWishListItem(updatedCart);
+      toast.success("Product added to WishList");
+
+
+    } else {
+      setWishListItem([...wishListItem, { ...product, quantity: 1 }]);
+    }
+  };
+  let removeProductFromWishList = (product) => {
+    let updatedWishListItem = wishListItem.filter((item) => {
+      return item.id !== product.id;
+    });
+    setWishListItem(updatedWishListItem);
+    toast.success("Item Removed From Cart");
+  };
+
+  let handleQuantityChangeWishList = (productId, newQuantity) => {
+    const updatedWishListItem = wishListItem.map(product =>
+      product.id === productId ? { ...product, quantity: newQuantity } : product
+    )
+    setWishListItem(updatedWishListItem)
+    toast.success("Product Quantity Changed in wishList")
   }
-};
-let removeProductFromWishList= (product) => {
-  let updatedWishListItem = wishListItem.filter((item) => {
-    return item.id !== product.id;
-  });
-  setWishListItem(updatedWishListItem);
-  toast.success("Item Removed From Cart");
-};
-
-let handleQuantityChangeWishList = (productId, newQuantity) => {
-  const updatedWishListItem = wishListItem.map(product =>
-    product.id === productId ? { ...product, quantity: newQuantity } : product
-  )
-  setWishListItem(updatedWishListItem)
-  toast.success("Product Quantity Changed in wishList")
-}
 
 
   return (

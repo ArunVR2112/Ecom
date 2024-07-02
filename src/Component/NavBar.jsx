@@ -4,7 +4,7 @@ import { IoIosCart } from "react-icons/io";
 import { FaRegHeart, FaBars, FaTimes } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { DataContext } from '../context/dataContext/DataContext.tsx';
-
+import { CgProfile } from "react-icons/cg";
 const NavBar = ({ setOpenCart, setOpenWishList }) => {
     const apiUrl = 'https://fakestoreapi.com/products/categories';
     const [categories, setCategories] = useState([]);
@@ -48,8 +48,7 @@ const NavBar = ({ setOpenCart, setOpenWishList }) => {
                     <div className='flex items-center gap-4'>
                         <IoIosCart className='hover:scale-150 py-2 text-xl' size={32} onClick={() => { setOpenCart(true); setNav(false); }} />
                         <FaRegHeart className='hover:scale-150 py-2 text-xl' size={32} onClick={() => { setOpenWishList(true); setNav(false); }} />
-                        <div className=''>
-                        </div>
+                        <CgProfile className='hover:scale-150 py-2 text-xl' size={32} />
                     </div>
                 )}
             </div>
@@ -77,6 +76,7 @@ const NavBar = ({ setOpenCart, setOpenWishList }) => {
                         <div className='flex flex-col cursor-auto items-center gap-4 mt-4'>
                             <IoIosCart className='hover:scale-150 text-3xl' size={24} onClick={() => { setOpenCart(true); setNav(false); }} />
                             <FaRegHeart className='hover:scale-150 text-3xl' size={24} onClick={() => { setOpenWishList(true); setNav(false); }} />
+                            <CgProfile className='hover:scale-150 text-3xl' size={24}/>
                         </div>
                     )}
                 </div>
