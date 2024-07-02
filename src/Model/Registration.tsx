@@ -36,7 +36,7 @@ const Registration = () => {
   // Submit Changes calling axios hook and 
   const handleSubmit = (event) => {
     event.preventDefault();
-    if (data.password.length<8) {
+    if (data.password.length < 8) {
       setError("Pls Enter The Password length greater than 8  !");
       return;
     }

@@ -81,8 +81,8 @@ const ProductPage = () => {
                                         }
                                         {
                                             user.status === 200 &&
-                                            <div className='bg-gradient-to-b cursor-pointer justify-center items-center max-w-max from-cyan-400 to-blue-500 '>
-                                                <button onClick={() => { addProductToCart(product) }} className='text-xl m-1'>Add To Cart</button>
+                                            <div className='bg-gradient-to-b mr-96 cursor-pointer justify-center items-center max-w-max from-cyan-400 to-blue-500 '>
+                                                <button onClick={() => { addProductToCart(product,new Date()) }} className='text-xl m-1'>Add To Cart</button>
                                             </div>
                                         }
                                     </div>

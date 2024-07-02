@@ -13,7 +13,7 @@ import Registration from "./Model/Registration.tsx";
 import { UserProvider } from "../src/context/dataContext/DataContext.tsx";
 import Footer from "./Section/Footer.tsx";
 import ScrollToTop from "./Section/ScrollerToTop.tsx";
-import DashBoard from "./Pages/DashBoard.tsx";
+import DashBoard from "./DashBoard/DashBoard.tsx";
 
 function App() {
   const [openCart, setOpenCart] = useState(false);

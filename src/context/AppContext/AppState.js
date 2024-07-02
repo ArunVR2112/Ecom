@@ -1,28 +1,52 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import AppContext from "./AppContext";
 import toast from "react-hot-toast";
-
-
+import { addProductTocartBackend } from './Fetchhook'
+import { DataContext } from '../dataContext/DataContext.tsx';
 
 export default function AppState({ children }) {
+
+  const [data, setData] = useState({
+    itemTitle: "",
+    itemQuantity: "",
+    price: 0,
+    createDateTime: "",
+    userInfo:{
+      userinfoid: 0
+    }
+  })
+  const { user } = useContext(DataContext);
   let appName = "My New Ecommerce";
 
   let [cartItems, setCartItems] = useState([]);
   let [wishListItem, setWishListItem] = useState([]);
 
   // Cart Related Context
-  let addProductToCart = (product) => {
+  let addProductToCart = (product, date) => {
 
     const exisitingProduct = cartItems.find((p) => p.id === product.id);
-    if (exisitingProduct) {
+    if (exisitingProduct && user.status===200) {
       const updatedCart = cartItems.map((p) =>
-        p.id === product.id ? { ...p, quantity: Number(p.quantity) + 1 } : p
-
+        p.id === product.id ? { ...p, quantity: Number(p.quantity) + 1 } : p,
+        setData({
+          itemTitle: product.itemTitle,
+          itemQuantity: product.itemQuantity,
+          price: product.price,
+          createDateTime: date.toISOString(),
+         userInfo: {
+        userinfoid: user.data.userinfoid  // Assuming userinfoid is available in `user`
+      }
+        })
       );
 
-      setCartItems(updatedCart);
-      toast.success("Product added to Cart");
-
+      addProductTocartBackend(data).then((result) => {
+        setCartItems(updatedCart);
+        toast.success("Product added to Cart");
+        console.log(user.data)
+      }).catch((err) => {
+        console.log(err)
+        toast.error("there is some error from back");
+      });
 
     } else {
       setCartItems([...cartItems, { ...product, quantity: 1 }]);
