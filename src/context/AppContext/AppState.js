@@ -21,20 +21,20 @@ export default function AppState({ children }) {
   let [cartItems, setCartItems] = useState([]);
   let [wishListItem, setWishListItem] = useState([]);
 
-  // Cart Related Context
-  let addProductToCart = (product, date) => {
 
+  let addProductToCart = (product, date) => {
+    
     const exisitingProduct = cartItems.find((p) => p.id === product.id);
     if (exisitingProduct && user.status===200) {
       const updatedCart = cartItems.map((p) =>
         p.id === product.id ? { ...p, quantity: Number(p.quantity) + 1 } : p,
         setData({
-          itemTitle: product.itemTitle,
+          itemTitle: product.title,
           itemQuantity: product.itemQuantity,
           price: product.price,
           createDateTime: date.toISOString(),
          userInfo: {
-        userinfoid: user.data.userinfoid  // Assuming userinfoid is available in `user`
+        userinfoid: user.data.userinfoid  
       }
         })
       );
@@ -42,7 +42,7 @@ export default function AppState({ children }) {
       addProductTocartBackend(data).then((result) => {
         setCartItems(updatedCart);
         toast.success("Product added to Cart");
-        console.log(user.data)
+     
       }).catch((err) => {
         console.log(err)
         toast.error("there is some error from back");
@@ -71,7 +71,7 @@ export default function AppState({ children }) {
     toast.success("Item Removed From Cart");
   };
 
-  //Prices Should also Increment 
+ 
   let logInFirst = () => {
     toast.success("Log IN to Account");
   }

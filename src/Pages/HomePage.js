@@ -27,7 +27,7 @@ const HomePage = () => {
         loading ? "Fetching Data ..... " : (product.map((data) => {
           return (
             <ProductCard product={data} />
-
+            
           )
         }))
       }
