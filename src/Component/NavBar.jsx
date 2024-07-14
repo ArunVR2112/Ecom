@@ -73,7 +73,7 @@ const NavBar = ({ setOpenCart, setOpenWishList }) => {
                         <Link to='/login' className='capitalize py-2 text-xl' onClick={() => setNav(false)}>
                             Sign in
                         </Link>
-                        
+                                
                     )}
                     {user.status === 200 && (
                         <div className='flex flex-col cursor-auto items-center gap-4 mt-4'>
