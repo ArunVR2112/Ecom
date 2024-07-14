@@ -22,20 +22,24 @@ const LogIn = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError('');
-
-    try {
-      const result = await loginData(data);
-      if (result.status === 200) {
         setUser({
-          status: result.status,
-          data: result.data,
+          status: 200,
+          data: data,
         });
         navigate('/home');
-      }
-    } catch (err) {
-      console.log(err.response?.data || 'An error occurred');
-      setError(err.response?.data || 'An error occurred');
-    }
+    // try {
+    //   const result = await loginData(data);
+    //   if (result.status === 200) {
+    //     setUser({
+    //       status: result.status,
+    //       data: result.data,
+    //     });
+    //     navigate('/home');
+    //   }
+    // } catch (err) {
+    //   console.log(err.response?.data || 'An error occurred');
+    //   setError(err.response?.data || 'An error occurred');
+    // }
   };
 
   return (

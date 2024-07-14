@@ -51,7 +51,7 @@ const NavBar = ({ setOpenCart, setOpenWishList }) => {
                     <div className='flex items-center gap-4'>
                         <IoIosCart className='hover:scale-150 py-2 text-xl' size={32} onClick={() => { setOpenCart(true); setNav(false); }} />
                         <FaRegHeart className='hover:scale-150 py-2 text-xl' size={32} onClick={() => { setOpenWishList(true); setNav(false); }} />
-                        <CgProfile className='hover:scale-150 py-2 text-xl' size={32} />
+                        <Link to={'/dashboard'}><CgProfile className='hover:scale-150 py-2 text-xl' size={32} /></Link>
                     </div>
                 )}
             </div>

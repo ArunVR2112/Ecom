@@ -1,29 +1,22 @@
-// import React, { useEffect } from "react";
-// import { useDispatch, useSelector } from "react-redux";
-// import { RootState } from "../ReduxApi/rootReducers";
-// import { fetchUser } from "../ReduxApi/userActions"; // Adjust path as needed
+import React from "react";
 
-// const Order: React.FC = () => {
-//     const dispatch = useDispatch();
-//     const { users, error } = useSelector((state: RootState) => state.user);
 
-//     useEffect(() => {
-//         dispatch(fetchUser());
-//     }, [dispatch]);
+const Order: React.FC = () => {
+    // const { users, error } = useSelector((state: RootState) => state.user);
 
-//     return (
-//         <div className="flex">
-//             <div className="flex flex-wrap">
-//                 {error && <p>Error: {error}</p>}
-//                 <h2>User List</h2>
-//                 <ul>
-//                     {users.map((user) => (
-//                         <li key={user.id}>{user.name}</li>
-//                     ))}
-//                 </ul>
-//             </div>
-//         </div>
-//     );
-// };
+    // useEffect(() => {
+    //     dispatch(fetchUser());
+    // }, [dispatch]);
 
-// export default Order;
+    return (
+        <div className='flex flex-col items-center mt-16'>
+            <div className='w-full max-w-3xl bg-white shadow-md rounded-lg overflow-hidden mb-8'>
+                <div className='px-6 py-4'>
+                    <h2>Hello</h2>
+                </div>
+            </div>
+        </div>
+    );
+};
+
+export default Order;
