@@ -14,13 +14,14 @@ import { UserProvider } from "../src/context/dataContext/DataContext.tsx";
 import Footer from "./Section/Footer.tsx";
 import ScrollToTop from "./Section/ScrollerToTop.tsx";
 import DashBoard from "./DashBoard/DashBoard.tsx";
-
+import ErrorPage from "./Component/ErrorPage.tsx";
 function App() {
   const [openCart, setOpenCart] = useState(false);
   const [openWishList, setOpenWishList] = useState(false);
 
   return (
     <div className="flex flex-col min-h-screen">
+
       <UserProvider>
         <ScrollToTop />
         <AppState>
@@ -36,7 +37,9 @@ function App() {
               <Route path='product/:id' element={<Product />} />
               <Route path="login" element={<LogIn />} />
               <Route path="registration" element={<Registration />} />
-              <Route path="/dashboard" element=<DashBoard/>/>
+              <Route path="/dashboard" element=<DashBoard /> />
+              <Route path="*" element=<ErrorPage /> />
+
             </Routes>
           </main>
         </AppState>

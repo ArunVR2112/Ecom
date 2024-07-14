@@ -7,11 +7,11 @@ import { DataContext } from '../dataContext/DataContext.tsx';
 export default function AppState({ children }) {
 
   const [data, setData] = useState({
-    itemTitle: "",
+    cartItemId: "",
     itemQuantity: "",
     price: 0,
     createDateTime: "",
-    userInfo:{
+    userInfo: {
       userinfoid: 0
     }
   })
@@ -23,26 +23,27 @@ export default function AppState({ children }) {
 
 
   let addProductToCart = (product, date) => {
-    
+
     const exisitingProduct = cartItems.find((p) => p.id === product.id);
-    if (exisitingProduct && user.status===200) {
+    if (exisitingProduct && user.status === 200) {
       const updatedCart = cartItems.map((p) =>
         p.id === product.id ? { ...p, quantity: Number(p.quantity) + 1 } : p,
         setData({
+          cartItemId: product.id,
           itemTitle: product.title,
           itemQuantity: product.itemQuantity,
           price: product.price,
           createDateTime: date.toISOString(),
-         userInfo: {
-        userinfoid: user.data.userinfoid  
-      }
+          userInfo: {
+            userinfoid: user.data.userinfoid
+          }
         })
       );
 
       addProductTocartBackend(data).then((result) => {
         setCartItems(updatedCart);
         toast.success("Product added to Cart");
-     
+
       }).catch((err) => {
         console.log(err)
         toast.error("there is some error from back");
@@ -71,7 +72,7 @@ export default function AppState({ children }) {
     toast.success("Item Removed From Cart");
   };
 
- 
+
   let logInFirst = () => {
     toast.success("Log IN to Account");
   }

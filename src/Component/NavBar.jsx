@@ -5,6 +5,9 @@ import { FaRegHeart, FaBars, FaTimes } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { DataContext } from '../context/dataContext/DataContext.tsx';
 import { CgProfile } from "react-icons/cg";
+
+
+
 const NavBar = ({ setOpenCart, setOpenWishList }) => {
     const apiUrl = 'https://fakestoreapi.com/products/categories';
     const [categories, setCategories] = useState([]);
