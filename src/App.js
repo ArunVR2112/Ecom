@@ -15,6 +15,9 @@ import Footer from "./Section/Footer.tsx";
 import ScrollToTop from "./Section/ScrollerToTop.tsx";
 import DashBoard from "./DashBoard/DashBoard.tsx";
 import ErrorPage from "./Component/ErrorPage.tsx";
+import Checkout from "./Pages/Checkout.jsx";
+
+
 function App() {
   const [openCart, setOpenCart] = useState(false);
   const [openWishList, setOpenWishList] = useState(false);
@@ -38,6 +41,7 @@ function App() {
               <Route path="login" element={<LogIn />} />
               <Route path="registration" element={<Registration />} />
               <Route path="/dashboard/*" element={<DashBoard />} />
+              <Route path="/product/order/checkout" element={<Checkout/>} />
               <Route path="*" element={<ErrorPage />} />
 
             </Routes>

@@ -16,27 +16,24 @@ const Order: React.FC = () => {
     }, []);
 
     return (
-        <div className='flex flex-col items-center mt-16'>
-            <div className='w-full max-w-3xl overflow-hidden mb-8'>
-                <div className="flex">
-                    {product.map((data) => (
+        <div className='lg:ml-60 items-center mt-16'>
+            <div className='w-full overflow-hidden mb-8'>
 
-                        <div key={data.id} className=" w-full">
-                            <div className="pl-12">
-                                <img src={data.image} className="h-64 mx-auto pb-4" alt="image"/>
-                            </div>
-                            <div className="ml-12 mt-16 gap-4 pb-4" >
-                                <h1 className="text-xl mb-4">{data.title}</h1>
-                                <p className="mb-2 ">{data.description}</p>
-                                <div className="flex justify-between mt-6">
-                                    <p className="mb-2 text-xl">${data.price}</p>
-                                    <button className="mb-2 text-xl">Button</button>
-                                </div>
-                            </div>
-
-                        </div>
-                    ))}
+                <div className="grid grid-cols-4 w-full gap-4 p-4 border-b font-bold">
+                    <div>Image</div>
+                    <div>Title</div>
+                    <div>Price</div>
+                    <div>Status</div>
                 </div>
+
+                {product.map((data) => (
+                    <div key={data.id} className="grid grid-cols-4 w-full gap-4 p-4 border-b">
+                        <img src={data.image} className="h-24 object-contain" alt={data.title} />
+                        <h1 className="text-xl font-semibold">{data.title}</h1>
+                        <p className="text-lg font-bold">${data.price}</p>
+                        <p className="text-lg">Available</p> {/* Assuming status is available */}
+                    </div>
+                ))}
             </div>
         </div>
     );

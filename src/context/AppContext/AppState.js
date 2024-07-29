@@ -3,9 +3,15 @@ import AppContext from "./AppContext";
 import toast from "react-hot-toast";
 import { addProductTocartBackend } from './Fetchhook'
 import { DataContext } from '../dataContext/DataContext.tsx';
+import { useNavigate } from "react-router-dom";
+
+
+
 
 export default function AppState({ children }) {
 
+
+  const navigate = useNavigate();
   const [data, setData] = useState({
     cartItemId: "",
     itemQuantity: "",

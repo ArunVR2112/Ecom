@@ -13,7 +13,7 @@ const DashBoard = () => {
         <Routes>
           <Route path="/" element={<DashboardLayout />}>
             <Route path="profile" element={<Profile />} />
-            <Route path="orders" element={<Orders />} />
+            <Route path="/orders" element={<Orders />} />
 
             {/* other routes */}
           </Route>
