@@ -15,7 +15,6 @@ import Footer from "./Section/Footer.tsx";
 import ScrollToTop from "./Section/ScrollerToTop.tsx";
 import DashBoard from "./DashBoard/DashBoard.tsx";
 import ErrorPage from "./Component/ErrorPage.tsx";
-import Profile from "./DashBoard/Profile.tsx";
 function App() {
   const [openCart, setOpenCart] = useState(false);
   const [openWishList, setOpenWishList] = useState(false);
